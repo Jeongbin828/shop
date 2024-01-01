@@ -20,6 +20,11 @@ class ItemRepositoryTest {
     private ItemRepository itemRepository;
 
     @Test
+    public void findByItemNmTest(){
+
+    }
+
+    @Test
     @DisplayName("상품 생성 테스트")
     public void createItemTest(){
         Item item = Item.builder()
