@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,9 +20,32 @@ class ItemRepositoryTest {
     @Autowired
     private ItemRepository itemRepository;
 
-    @Test
-    public void findByItemNmTest(){
+    public void createItemList(){
+        for (int i = 1; i <= 10; i++) {
+            Item item = Item.builder()
+                    .itemNm("테스트 상품" + i)
+                    .price(10000 + i)
+                    .stockNumber(100 + i)
+                    .itemDetail("테스트 상품 상세 설명" + i)
+                    .itemSellStatus(ItemSellStatus.SELL)
+                    .regTime(LocalDateTime.now())
+                    .updateTime(LocalDateTime.now())
+                    .build();
 
+            itemRepository.save(item);
+        }
+    }
+
+    @Test
+    @DisplayName("상품 이름 검색 테스트")
+    public void findByItemNmTest(){
+        createItemTest();
+
+        itemRepository
+                .findByItemNm("테스트 상품1")
+                .forEach((item)->{
+                    System.out.println(item);
+                });
     }
 
     @Test
