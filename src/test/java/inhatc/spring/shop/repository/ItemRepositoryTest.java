@@ -37,13 +37,31 @@ class ItemRepositoryTest {
     }
 
     @Test
+    @DisplayName("OrderBy 테스트")
+    public void findByPriceLessThanOrderByPriceDescTest(){
+        createItemTest();
+        itemRepository.findByPriceLessThanOrderByPriceDesc(10005)
+                .forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("OR 테스트")
+    public void findByItemNmOrItemDetailTest(){
+        createItemTest();
+        List<Item> itemList = itemRepository.findByItemNmOrItemDetail("테스트 상품2", "테스트 상품 상세 설명8");
+        itemList.forEach((item -> {
+            System.out.println(item);
+        }));
+    }
+
+    @Test
     @DisplayName("상품 이름 검색 테스트")
     public void findByItemNmTest(){
         createItemTest();
 
         itemRepository
                 .findByItemNm("테스트 상품1")
-                .forEach((item)->{
+                .forEach((item) -> {
                     System.out.println(item);
                 });
     }
