@@ -37,6 +37,26 @@ class ItemRepositoryTest {
     }
 
     @Test
+    @DisplayName("Native 테스트")
+    public void findByDetailNativeTest(){
+        createItemTest();
+        itemRepository.findByDetailNative("1")
+                .forEach((item) -> {
+                    System.out.println(item);
+                });
+    }
+
+    @Test
+    @DisplayName("JPQL 테스트")
+    public void findByDetailTest(){
+        createItemTest();
+        itemRepository.findByDetail("1")
+                .forEach((item) -> {
+                    System.out.println(item);
+                });
+    }
+
+    @Test
     @DisplayName("OrderBy 테스트")
     public void findByPriceLessThanOrderByPriceDescTest(){
         createItemTest();
