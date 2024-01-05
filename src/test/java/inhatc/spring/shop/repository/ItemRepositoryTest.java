@@ -27,7 +27,7 @@ class ItemRepositoryTest {
     @Autowired
     private ItemRepository itemRepository;
 
-    @PersistenceContext
+    @Autowired
     private EntityManager em;
 
     public void createItemList(){
@@ -51,7 +51,6 @@ class ItemRepositoryTest {
     public void querydslTest(){
         createItemTest();
         JPAQueryFactory query = new JPAQueryFactory(em);
-        QItem qItem = item;
 
         List<Item> itemList = query.selectFrom(item)
                 .where(item.itemSellStatus.eq(ItemSellStatus.SELL))
