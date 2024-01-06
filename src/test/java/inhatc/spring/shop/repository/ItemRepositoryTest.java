@@ -46,6 +46,42 @@ class ItemRepositoryTest {
         }
     }
 
+    public void createItemList2(){
+        for (int i = 1; i <= 5; i++) {
+            Item item = Item.builder()
+                    .itemNm("테스트 상품" + i)
+                    .price(10000 + i)
+                    .stockNumber(100 + i)
+                    .itemDetail("테스트 상품 상세 설명" + i)
+                    .itemSellStatus(ItemSellStatus.SELL)
+                    .regTime(LocalDateTime.now())
+                    .updateTime(LocalDateTime.now())
+                    .build();
+
+            itemRepository.save(item);
+        }
+        for (int i = 6; i <= 10; i++) {
+            Item item = Item.builder()
+                    .itemNm("테스트 상품" + i)
+                    .price(10000 + i)
+                    .stockNumber(100 + i)
+                    .itemDetail("테스트 상품 상세 설명" + i)
+                    .itemSellStatus(ItemSellStatus.SOLD_OUT)
+                    .regTime(LocalDateTime.now())
+                    .updateTime(LocalDateTime.now())
+                    .build();
+
+            itemRepository.save(item);
+        }
+    }
+
+    @Test
+    @DisplayName("querydsl 테스트2")
+    public void querydslTest2(){
+        createItemList2();
+
+    }
+
     @Test
     @DisplayName("querydsl 테스트")
     public void querydslTest(){
