@@ -1,5 +1,6 @@
 package inhatc.spring.shop.repository;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -80,6 +81,14 @@ class ItemRepositoryTest {
     public void querydslTest2(){
         createItemList2();
 
+        BooleanBuilder builder = new BooleanBuilder();
+        String itemDetail = "테스트";
+        int price = 10004;
+
+        QItem item = QItem.item;
+
+        builder.and(item.itemDetail.like("%" + itemDetail + "%"));
+        builder.and(item.price.gt(price));
     }
 
     @Test
