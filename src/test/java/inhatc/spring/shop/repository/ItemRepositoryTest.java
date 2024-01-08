@@ -13,7 +13,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -84,11 +88,24 @@ class ItemRepositoryTest {
         BooleanBuilder builder = new BooleanBuilder();
         String itemDetail = "테스트";
         int price = 10004;
+        String itemSellStatus = "SELL";
 
         QItem item = QItem.item;
 
         builder.and(item.itemDetail.like("%" + itemDetail + "%"));
         builder.and(item.price.gt(price));
+
+        if(StringUtils.equals(itemSellStatus, ItemSellStatus.SELL)){
+            builder.and(item.itemSellStatus.eq(ItemSellStatus.SELL));
+        }
+
+        Pageable pageable = PageRequest.of(0, 5);
+
+        Page<Item> page = itemRepository.findAll(builder, pageable);
+        List<Item> content = page.getContent();
+        content.stream().forEach((e) -> {
+            System.out.println(e);
+        });
     }
 
     @Test
