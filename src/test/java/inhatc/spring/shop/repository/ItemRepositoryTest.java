@@ -87,7 +87,7 @@ class ItemRepositoryTest {
 
         BooleanBuilder builder = new BooleanBuilder();
         String itemDetail = "테스트";
-        int price = 10004;
+        int price = 10002;
         String itemSellStatus = "SELL";
 
         QItem item = QItem.item;
