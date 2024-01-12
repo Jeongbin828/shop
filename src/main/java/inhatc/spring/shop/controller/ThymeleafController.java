@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ThymeleafController {
     @GetMapping("/thymeleaf/ex1")
     public String ex1(){
-        System.out.println("123");
 
         return "thymeleaf/ex1";
     }
