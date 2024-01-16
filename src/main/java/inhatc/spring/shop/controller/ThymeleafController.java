@@ -18,7 +18,7 @@ public class ThymeleafController {
                 .price(20000)
                 .build();
 
-        model.addAttribute("data", itemDto);
+        model.addAttribute("itemDto", itemDto);
         return "thymeleaf/ex1";
     }
 }
