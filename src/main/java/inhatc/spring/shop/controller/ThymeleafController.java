@@ -10,7 +10,7 @@ import java.awt.*;
 @Controller
 public class ThymeleafController {
     @GetMapping("/thymeleaf/ex1")
-    public String ex1(Model model){
+    public String ex1(Model model, ItemDto dto){
         ItemDto itemDto = ItemDto.builder()
                 .itemNm("최신 스프링")
                 .itemDetail("스프링 부트 3.1.4")
