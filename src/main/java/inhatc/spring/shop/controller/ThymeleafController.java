@@ -33,7 +33,7 @@ public class ThymeleafController {
 
     @GetMapping("/thymeleaf/ex3")
     public String ex3(String name, int age){
-        log.info("name : " + name + ", age : " + age);
+        log.info("==========> name : " + name + ", age : " + age);
         return "thymeleaf/ex3";
     }
 }
