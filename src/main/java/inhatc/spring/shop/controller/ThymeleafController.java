@@ -1,6 +1,7 @@
 package inhatc.spring.shop.controller;
 
 import inhatc.spring.shop.dto.ItemDto;
+import inhatc.spring.shop.dto.ParamDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,8 +33,9 @@ public class ThymeleafController {
     }
 
     @GetMapping("/thymeleaf/ex3")
-    public String ex3(String name, int age){
-        log.info("==========> name : " + name + ", age : " + age);
+    public String ex3(ParamDto paramDto, Model model){
+        log.info("==========> paramDto : " + paramDto);
+        model.addAttribute("dto", paramDto);
         return "thymeleaf/ex3";
     }
 }
