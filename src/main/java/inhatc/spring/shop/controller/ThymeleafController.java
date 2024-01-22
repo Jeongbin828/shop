@@ -38,4 +38,9 @@ public class ThymeleafController {
         model.addAttribute("dto", paramDto);
         return "thymeleaf/ex3";
     }
+
+    @GetMapping("/thymeleaf/ex4")
+    public String ex4(){
+        return "thymeleaf/ex4";
+    }
 }
