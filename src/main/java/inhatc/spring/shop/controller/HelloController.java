@@ -13,11 +13,13 @@ import java.awt.*;
 public class HelloController {
 //    @RequestMapping(value = "/", method = RequestMethod.GET)
     @GetMapping("/")
-    public UserDto hello(){
-        UserDto userDto = UserDto.builder().name("김길동").age(10).build();
-        userDto.setAge(20);
-        userDto.setName("홍길동");
-        System.out.println("UserDto : " + userDto);
-        return userDto;
+    public String hello(){
+//        UserDto userDto = UserDto.builder().name("김길동").age(10).build();
+//        userDto.setAge(20);
+//        userDto.setName("홍길동");
+//        System.out.println("UserDto : " + userDto);
+//        return userDto;
+
+        return "thymeleaf/ex4";
     }
 }
